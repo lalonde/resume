@@ -15,6 +15,6 @@ in-docker:
 
 .PHONY: clean
 clean:
-	@rm mjl-resume.aux mjl-resume.out mjl-resume.log
+	@rm -f mjl-resume.aux mjl-resume.out mjl-resume.log
 
 # end
