@@ -1,0 +1,25 @@
+name: Release Resume
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Build Resume
+        run: make in-docker
+      
+      - name: Create Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "${{ github.ref_name }}" \
+            mjl-resume.pdf \
+            --title "Resume ${{ github.ref_name }}" \
+            --notes "Automated resume release."
