@@ -17,7 +17,7 @@ release:
 
 .PHONY: in-docker
 in-docker:
-	@docker run --rm -v "${PWD}:/scratch" -w "/scratch" texlive/texlive:latest make
+	@docker run --rm -v "${PWD}:/scratch" -w "/scratch" texlive/texlive:latest make mjl-resume.pdf
 
 .PHONY: clean
 clean:
